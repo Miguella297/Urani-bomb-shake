@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d4ji6liapfqe3"
+path="res://.godot/imported/bomb explosion.mp3-47ed97569aadb9bb69207a994224d661.mp3str"
+
+[deps]
+
+source_file="res://bomb explosion.mp3"
+dest_files=["res://.godot/imported/bomb explosion.mp3-47ed97569aadb9bb69207a994224d661.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
