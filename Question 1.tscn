@@ -1,0 +1,133 @@
+[gd_scene load_steps=12 format=3 uid="uid://dp487ec6sj2jx"]
+
+[ext_resource type="Texture2D" uid="uid://b6s8ookcw3sgs" path="res://waveyy.png" id="1_4xpvd"]
+[ext_resource type="Script" uid="uid://qc88tah8jlr8" path="res://question_1.gd" id="1_neup2"]
+[ext_resource type="FontFile" uid="uid://c3xsq5cmikiwm" path="res://Vito Bold - Copy - Copy.otf" id="2_ufpmb"]
+[ext_resource type="FontFile" uid="uid://b705uo7x155yr" path="res://Vito Bold - Copy.otf" id="3_73j80"]
+[ext_resource type="PackedScene" uid="uid://co3b4chnujtpf" path="res://coin.tscn" id="4_ufpmb"]
+[ext_resource type="FontFile" uid="uid://bx8w0gss66tq6" path="res://Super Nugget.ttf" id="5_73j80"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neup2"]
+texture = ExtResource("1_4xpvd")
+modulate_color = Color(0, 0.747912, 0.748957, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_neup2"]
+bg_color = Color(0.6, 0.219608, 0.6, 0)
+border_color = Color(0.8, 0.137255, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s37nj"]
+bg_color = Color(0.6, 0.6, 0.6, 0.12549)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.121569, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6mpi"]
+bg_color = Color(0.6, 0, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wia2g"]
+bg_color = Color(0.6, 0.6, 0.6, 0.403922)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0, 0.8, 1)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_neup2")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1153.0
+offset_bottom = 646.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_neup2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 53.0
+offset_top = 76.0
+offset_right = 1472.0
+offset_bottom = 172.0
+scale = Vector2(0.728261, 1.05021)
+theme_override_colors/font_color = Color(0.498039, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ufpmb")
+theme_override_font_sizes/font_size = 70
+text = "Well done! You chose the right portal!!"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 776.0
+offset_top = 177.0
+offset_right = 1137.0
+offset_bottom = 232.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_73j80")
+theme_override_font_sizes/font_size = 40
+text = "Coins collected: 3"
+
+[node name="Node2D" parent="." instance=ExtResource("4_ufpmb")]
+position = Vector2(970, 339)
+scale = Vector2(6.02117, 5.30398)
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 28.0
+offset_top = 211.0
+offset_right = 747.0
+offset_bottom = 380.0
+theme_override_colors/font_color = Color(0.842483, 8.49989e-05, 0.672065, 1)
+theme_override_fonts/font = ExtResource("5_73j80")
+theme_override_font_sizes/font_size = 60
+text = "Click a button at random ->chance
+to advance"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 28.0
+offset_top = 339.0
+offset_right = 454.0
+offset_bottom = 457.0
+theme_override_colors/font_disabled_color = Color(0.968627, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.890196, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0.882353, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.847059, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0.847059, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.854902, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.827451, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0.862745, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.854902, 0, 0, 1)
+theme_override_colors/font_color = Color(0.847059, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.87451, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.85098, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_neup2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s37nj")
+text = "30%"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 28.0
+offset_top = 476.0
+offset_right = 454.0
+offset_bottom = 605.0
+theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.968627, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.972549, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_a6mpi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wia2g")
+text = "29.9%"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

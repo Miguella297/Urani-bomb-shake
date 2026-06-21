@@ -1,3 +1,152 @@
-[gd_scene format=3 uid="uid://b0osoujmfaucq"]
+[gd_scene load_steps=14 format=3 uid="uid://b0osoujmfaucq"]
+
+[ext_resource type="Script" uid="uid://db2gk11l5r5r5" path="res://deathscene.gd" id="1_65y2e"]
+[ext_resource type="Texture2D" uid="uid://cw3n5q4t8rxu7" path="res://seal .png" id="1_pkdbu"]
+[ext_resource type="Texture2D" uid="uid://bmygsdbtqlitt" path="res://spikes1.png" id="2_fyaj3"]
+[ext_resource type="PackedScene" uid="uid://ci0uie6esctd3" path="res://bomb.tscn" id="3_fyaj3"]
+[ext_resource type="AudioStream" uid="uid://d4ji6liapfqe3" path="res://bomb explosion.mp3" id="4_aemne"]
+[ext_resource type="FontFile" uid="uid://bx8w0gss66tq6" path="res://Super Nugget.ttf" id="5_sxo51"]
+[ext_resource type="AudioStream" uid="uid://dpfu8vwxshlu1" path="res://deathsound.mp3" id="7_uwjh0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aemne"]
+texture = ExtResource("1_pkdbu")
+modulate_color = Color(0.662452, 0.662452, 0.662452, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxo51"]
+texture = ExtResource("2_fyaj3")
+modulate_color = Color(0.728822, 0.728822, 0.728822, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwjh0"]
+bg_color = Color(0.701961, 1, 0, 0.231373)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.8, 0.8, 0, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65y2e"]
+bg_color = Color(0.580392, 0.513726, 0.6, 0.317647)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.8, 0.8, 0, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnxiw"]
+bg_color = Color(0.85098, 0.835294, 0, 0.45098)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.933692, 0.793189, 0, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxo51"]
+bg_color = Color(0.599549, 0.624244, 0.376192, 0.34902)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.8, 0.8, 0, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_65y2e")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 579.0
+offset_bottom = 650.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_aemne")
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 579.0
+offset_right = 1154.0
+offset_bottom = 650.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_sxo51")
+
+[node name="Node2D" parent="." instance=ExtResource("3_fyaj3")]
+position = Vector2(1023, 51)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1121, 526)
+stream = ExtResource("4_aemne")
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 368.0
+offset_top = 51.0
+offset_right = 833.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(0.21284, 0.439922, 1, 1)
+theme_override_fonts/font = ExtResource("5_sxo51")
+theme_override_font_sizes/font_size = 100
+text = "You're dead"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 300.0
+offset_top = 154.0
+offset_right = 898.0
+offset_bottom = 322.0
+theme_override_colors/font_disabled_color = Color(0, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 0, 1)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/hover = SubResource("StyleBoxFlat_uwjh0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_65y2e")
+text = "Try again"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 310.0
+offset_top = 342.0
+offset_right = 908.0
+offset_bottom = 514.0
+theme_override_colors/font_disabled_color = Color(0, 1, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0.996078, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 0, 1)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/hover = SubResource("StyleBoxFlat_nnxiw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sxo51")
+text = "Exit"
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(310, 342)
+stream = ExtResource("7_uwjh0")
+volume_db = 0.99
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
