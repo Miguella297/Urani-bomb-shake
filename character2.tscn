@@ -32,4 +32,3 @@ position = Vector2(-0.999992, -0.999992)
 scale = Vector2(2.50625, 2.51953)
 sprite_frames = SubResource("SpriteFrames_ehw7d")
 autoplay = "default"
-frame_progress = 0.42136
