@@ -204,5 +204,6 @@ position = Vector2(812, 617)
 position = Vector2(105, 488)
 
 [node name="Node2D10" parent="." instance=ExtResource("5_t88pq")]
+visible = false
 position = Vector2(93, 475)
 scale = Vector2(0.439211, 0.513402)

@@ -89,9 +89,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l4wsw")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 9.0
 }]
 
 [node name="Node2D" type="Node2D"]
@@ -101,3 +101,6 @@ texture_filter = 1
 position = Vector2(-1, -2)
 scale = Vector2(0.665509, 0.554965)
 sprite_frames = SubResource("SpriteFrames_te8xu")
+autoplay = "default"
+frame = 11
+frame_progress = 1.0
