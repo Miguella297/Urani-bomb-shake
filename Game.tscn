@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhb6crxirjxpt"]
+[gd_scene load_steps=20 format=3 uid="uid://dhb6crxirjxpt"]
 
 [ext_resource type="Texture2D" uid="uid://bvmpxjjj6tr8e" path="res://game background.jpg" id="1_xkndl"]
 [ext_resource type="Texture2D" uid="uid://bx57lierqvmjx" path="res://Terrain (16x16).png" id="2_u44n3"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://c45dxabtc62ei" path="res://character_body_2d.gd" id="5_2vekm"]
 [ext_resource type="Texture2D" uid="uid://b64ghxhbou7dp" path="res://seal fly.png" id="5_3mrqo"]
 [ext_resource type="PackedScene" uid="uid://cg2kj4eolhnpk" path="res://character2.1.tscn" id="5_t88pq"]
+[ext_resource type="Texture2D" uid="uid://bitvi1bcmspy4" path="res://seal stay.png" id="6_3mrqo"]
+[ext_resource type="Texture2D" uid="uid://rvps3ihwkhgw" path="res://sealwalk.png" id="7_joorw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sb48q"]
 texture = ExtResource("1_xkndl")
@@ -302,6 +304,69 @@ texture = ExtResource("2_u44n3")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_joorw")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_joorw"]
+atlas = ExtResource("5_3mrqo")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vekm"]
+atlas = ExtResource("7_joorw")
+region = Rect2(0, 0, 107, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx171"]
+atlas = ExtResource("7_joorw")
+region = Rect2(0, 82, 107, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0x5m"]
+atlas = ExtResource("6_3mrqo")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mrqo"]
+atlas = ExtResource("6_3mrqo")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvtmh"]
+atlas = ExtResource("5_3mrqo")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_joorw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joorw")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vekm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx171")
+}],
+"loop": true,
+"name": &"Running",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0x5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mrqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvtmh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0x5m"]
+size = Vector2(79, 46.5)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Panel" type="Panel" parent="."]
@@ -347,8 +412,12 @@ layer_0/tile_data = PackedInt32Array(2228225, 458752, 0, 2293761, 458752, 1, 235
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("5_2vekm")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(50, 507)
-texture = ExtResource("5_3mrqo")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(48, 525)
+sprite_frames = SubResource("SpriteFrames_joorw")
+animation = &"Running"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(45.5, 523.25)
+shape = SubResource("RectangleShape2D_r0x5m")
