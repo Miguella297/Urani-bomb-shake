@@ -1,16 +1,15 @@
 extends Area2D
 
-@export var target_scene_path: String = "res://lose.tscn"
+@export var target_scene_path: String = "res://Lose.tscn"
 
-func _ready():
-	# Connect the signal (if not already connected in the editor)
-	connect("body_entered", _on_body_entered)
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
 
-func _on_body_entered(body):
-	# Check if the body is in your player (assuming its a Kinematicbody2D or a Characterbody2D)
-	
-	if body.is_in_group("Bomb"):
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		set_deferred("monitoring", false)  # changed from: monitoring = false
 		call_deferred("_fix")
 
-func _fix():
-	get_tree().change_scene_to_file(target_scene_path)
+func _fix() -> void:
+	if is_inside_tree():
+		get_tree().change_scene_to_file(target_scene_path)

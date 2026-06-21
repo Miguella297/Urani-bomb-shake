@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://co3b4chnujtpf"]
+[gd_scene load_steps=10 format=3 uid="uid://co3b4chnujtpf"]
 
 [ext_resource type="Texture2D" uid="uid://dhx5l0nhtbcfu" path="res://coin.png" id="1_d5gmh"]
 [ext_resource type="Script" uid="uid://bp4kee3aucrs2" path="res://area_2d_1.gd" id="2_0t63x"]
+[ext_resource type="AudioStream" uid="uid://dxw6umrueomdj" path="res://coin sound.mp3" id="3_v7riw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0t63x"]
 atlas = ExtResource("1_d5gmh")
@@ -20,13 +21,28 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7riw"]
 
+[sub_resource type="Animation" id="Animation_v7riw"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D1/AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 14), Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_0t63x"]
 resource_name = "new_animation"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/path = NodePath("Area2D1/AnimatedSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,21 +50,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 14), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_v7riw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdq0q"]
@@ -59,17 +60,21 @@ _data = {
 
 [node name="Node2D" type="Node2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
+[node name="Area2D1" type="Area2D" parent="."]
 scale = Vector2(1.625, 1.5625)
-sprite_frames = SubResource("SpriteFrames_v7riw")
-
-[node name="Area2D1" type="Area2D" parent="AnimatedSprite2D"]
 script = ExtResource("2_0t63x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D1"]
-position = Vector2(0, -2.56)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D1"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_v7riw")
+frame_progress = 0.203378
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D1"]
 shape = SubResource("CircleShape2D_v7riw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D1"]
+stream = ExtResource("3_v7riw")
+volume_db = 0.12
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 14)
@@ -78,4 +83,6 @@ position = Vector2(0, 14)
 libraries = {
 &"": SubResource("AnimationLibrary_pdq0q")
 }
-autoplay = "new_animation"
+autoplay = "RESET"
+
+[connection signal="body_entered" from="Area2D1" to="Area2D1" method="_on_body_entered"]
